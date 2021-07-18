@@ -1,4 +1,4 @@
-- [x] Get an idea about react and typescript
+- [x] Get an idea about  typescript,antd & redux toolkit
 
 
 ### main work
