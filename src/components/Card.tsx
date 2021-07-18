@@ -14,7 +14,7 @@ const CardComponent: React.FC<MockItems> = ({ price, description, id, image, tit
 	return (
 		<Card
 			hoverable
-			style={{ width: 340 }}
+			style={{ width: 340, height: 360, padding: 10 }}
 			cover={<img className="product-image" alt={title} src={image} />}
 		>
 			<Meta title={title} description={description.slice(0, 50)} />

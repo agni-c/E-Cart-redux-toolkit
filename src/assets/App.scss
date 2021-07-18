@@ -1,6 +1,7 @@
 @import 'antd/dist/antd.css';
 .App {
-  text-align: center;
+  width: 100%;
+  background-color: #defdfd;
 }
 
 .item-container {
@@ -10,6 +11,7 @@
   grid-template-columns: repeat(4, 1fr);
   gap: 20px;
   padding-bottom: 5em;
+  place-items: center;
 }
 .product-image {
   height: 200px;
