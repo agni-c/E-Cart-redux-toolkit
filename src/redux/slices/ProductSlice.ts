@@ -1,7 +1,6 @@
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
 
-import { useSelector } from 'react-redux';
-import { getItems } from '../../services/mock';
+import { getItems, getSingleItem } from '../../services/mock';
 
 interface Item {
   id: number;
@@ -30,15 +29,39 @@ export const loadProducts = createAsyncThunk(
   }
 );
 
+export const getProductDetails = createAsyncThunk(
+  'products/getSingleProduct',
+  async (id: number) => {
+    const data = await getSingleItem(id);
+    console.log(data, 'get single Item');
+    return data;
+  }
+);
+
 const productSlice = createSlice({
   name: 'productSlice',
   initialState,
-  reducers: {},
-  extraReducers: ({ addCase }) => {
-    addCase(loadProducts.fulfilled, (state, action: PayloadAction<[]>) => {
-      state.products = [...action.payload];
-    });
+  reducers: {
+    resetCurrentProduct: (state) => {
+      state.currentProduct = null;
+    },
+  },
+  extraReducers: (cases) => {
+    cases
+      .addCase(
+        loadProducts.fulfilled,
+        (state, action: PayloadAction<Item[]>) => {
+          state.products = [...action.payload];
+        }
+      )
+      .addCase(
+        getProductDetails.fulfilled,
+        (state, action: PayloadAction<Item>) => {
+          state.currentProduct = action.payload;
+        }
+      );
   },
 });
 
+export const { resetCurrentProduct } = productSlice.actions;
 export default productSlice.reducer;

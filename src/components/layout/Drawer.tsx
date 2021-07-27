@@ -12,9 +12,9 @@ const DrawerComponent: React.FC<Props> = ({ onClose, visible }) => {
 		<>
 
 			<Drawer
-				title="Basic Drawer"
+				title="Your Items"
 				placement="right"
-				closable={false}
+				closable={true}
 				onClose={onClose}
 				visible={visible}
 			>

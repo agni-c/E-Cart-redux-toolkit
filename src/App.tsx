@@ -8,6 +8,11 @@ import { getItems, MockItems } from './services/mock';
 import DrawerComponent from './components/layout/Drawer';
 import ProductListing from './screens/ProductListing';
 
+
+import { Switch, BrowserRouter as Router, Route } from "react-router-dom"
+import { getProductDetails } from './redux';
+import ProductDetails from './screens/ProductDetails';
+
 const App: React.FC = () => {
 
   const [ visible, setVisible ] = useState(false);
@@ -23,9 +28,14 @@ const App: React.FC = () => {
 
   return (
     <div className="App">
-      <NavBar showDrawer={showDrawer} />
-      <DrawerComponent onClose={onClose} visible={visible} />
-      <ProductListing />
+      <Router>
+        <NavBar showDrawer={showDrawer} />
+        <DrawerComponent onClose={onClose} visible={visible} />
+
+        <Route exact path="/" component={ProductListing} />
+        <Route exact path="/:id" component={ProductDetails} />
+
+      </Router>
     </div>
   )
 }

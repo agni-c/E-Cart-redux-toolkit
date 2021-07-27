@@ -1,7 +1,9 @@
+@use "sass:math";
 @import 'antd/dist/antd.css';
 .App {
   width: 100%;
   background-color: #defdfd;
+  min-height: 100vh;
 }
 
 .item-container {
@@ -16,4 +18,45 @@
 .product-image {
   height: 200px;
   object-fit: scale-down;
+}
+.item-details {
+  width: 100%;
+  height: calc(100vh - 100px);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 0 72px;
+
+  .product-display-img {
+    height: calc(100vh - 200px);
+    width: auto;
+    img {
+      object-fit: contain;
+    }
+  }
+}
+.product-quantity-counter {
+  display: flex;
+  width: 150px;
+  input {
+    text-align: center;
+    font-size: 25px;
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+  }
+  .btn {
+    font-size: 25px;
+    /* padding: 0; */
+    height: 100%;
+  }
+}
+.product-add-to-cart {
+  padding: 22px 13px;
+  display: flex;
+  font-size: 20px;
+  margin-top: 25px;
+  justify-content: center;
+  align-items: center;
 }

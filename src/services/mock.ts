@@ -19,3 +19,14 @@ export const getItems = async (qty: number = 20): Promise<any> => {
     console.log(error);
   }
 };
+export const getSingleItem = async (id: number): Promise<any> => {
+  try {
+    const res: AxiosResponse = await axios.get(
+      `https://fakestoreapi.com/products/${id}`
+    );
+    const data = res.data;
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};

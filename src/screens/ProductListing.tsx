@@ -2,8 +2,6 @@
 import React, { useState, useEffect } from 'react';
 import CardComponent from '../components/Card';
 
-
-import { useDispatch, useSelector } from "react-redux"
 import useProducts from '../hooks/useProducts';
 
 
@@ -16,7 +14,7 @@ const ProductListing: React.FC = () => {
   console.log({ products });
   return (
     <div className="item-container">
-      {products.length > 0 && products.map((items: any) => (
+      {products && products.length > 0 ? products.map((items: any) => (
         <CardComponent
           description={items.description}
           id={items.id}
@@ -24,7 +22,7 @@ const ProductListing: React.FC = () => {
           price={items.price}
           title={items.title}
         />
-      ))}
+      )) : null}
     </div>
   );
 };
