@@ -10,18 +10,21 @@ import ProductListing from './screens/ProductListing';
 
 
 import { Switch, BrowserRouter as Router, Route } from "react-router-dom"
-import { getProductDetails } from './redux';
+import { getProductDetails, toggleCart } from './redux';
 import ProductDetails from './screens/ProductDetails';
+import { useAppSelector } from './redux/hooks';
+import { useDispatch } from 'react-redux';
 
 const App: React.FC = () => {
 
-  const [ visible, setVisible ] = useState(false);
+  const visible = useAppSelector(state => state.cart.isOpen)
+  const dispatch = useDispatch()
 
   const showDrawer = () => {
-    setVisible(true);
+    dispatch(toggleCart())
   };
   const onClose = () => {
-    setVisible(false);
+    dispatch(toggleCart())
   };
 
 

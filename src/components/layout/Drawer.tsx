@@ -1,5 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Drawer, Button } from 'antd';
+import { useAppDispatch, useAppSelector } from '../../redux/hooks';
+import { loadCart } from '../../redux';
+import CartItemCard from '../CartItemCard';
 
 interface Props {
 	onClose: () => void;
@@ -7,7 +10,12 @@ interface Props {
 }
 
 const DrawerComponent: React.FC<Props> = ({ onClose, visible }) => {
+	const cartItems = useAppSelector(state => state.cart.cart)
+	const dispatch = useAppDispatch()
 
+	useEffect(() => {
+		dispatch(loadCart())
+	}, [])
 	return (
 		<>
 
@@ -17,10 +25,13 @@ const DrawerComponent: React.FC<Props> = ({ onClose, visible }) => {
 				closable={true}
 				onClose={onClose}
 				visible={visible}
+				width={500}
 			>
-				<p>Some contents...</p>
-				<p>Some contents...</p>
-				<p>Some contents...</p>
+				{cartItems.length > 0 ?
+					cartItems.map(({ id, image, description, price, title, qty }) =>
+						<CartItemCard key={id} image={image} description={description} price={price} qty={qty} title={title} />)
+					: <p>Your Cart Is Empty</p>}
+
 			</Drawer>
 		</>
 	)

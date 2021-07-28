@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../redux/hooks';
-import { getProductDetails } from '../redux';
+import { addToCart, getProductDetails } from '../redux';
 import { Image, Button, Input } from 'antd';
 import LoadingCard from '../components/LoadingCard';
 
@@ -45,7 +45,9 @@ const ProductDetails: React.FC = () => {
 								<Input type="number" min={1} max={10} value={qty} />
 								<Button className="btn decrement" onClick={(e) => qty > 0 && setQty(qty - 1)}>-</Button>
 							</div>
-							<Button type="primary" className="product-add-to-cart">
+							<Button onClick={() => {
+								dispatch(addToCart({ ...currentProd, qty }))
+							}} type="primary" className="product-add-to-cart">
 								ADD TO CART
 							</Button>
 						</div>
