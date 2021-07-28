@@ -21,7 +21,7 @@ const CardComponent: React.FC<MockItems> = ({ price, description, id, image, tit
 				cover={<img className="product-image" alt={title} src={image} />}
 			>
 				<Meta title={title} description={description.slice(0, 50)} />
-				<h2>Price: ${price}</h2>
+				<h2>Price:  ₹{(price * 70).toFixed(2)}</h2>
 
 			</Card>
 		</Link>
