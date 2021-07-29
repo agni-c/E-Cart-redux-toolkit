@@ -51,7 +51,9 @@ const cartSlice = createSlice({
 
     adjustQty: (state, action) => {
       state.cart = state.cart.map((item) =>
-        item.id === action.payload.id ? (item.qty = action.payload.qty) : item
+        item.id === action.payload.id
+          ? { ...item, qty: item.qty + action.payload.qty }
+          : item
       );
       localStorage.setItem('cart', JSON.stringify(state.cart));
     },
