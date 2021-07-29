@@ -17,6 +17,7 @@ const ProductListing: React.FC = () => {
       {products && products.length > 0 ? products.map((items: any) => (
         <CardComponent
           description={items.description}
+          key={items.id}
           id={items.id}
           image={items.image}
           price={items.price}

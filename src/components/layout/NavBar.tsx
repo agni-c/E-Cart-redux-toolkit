@@ -1,6 +1,7 @@
 import React from 'react'
 import { Button, PageHeader } from 'antd';
 import { RiShoppingCartFill } from "react-icons/ri"
+import { BsFillHeartFill } from "react-icons/bs"
 import { Link } from 'react-router-dom';
 import { useAppDispatch } from '../../redux/hooks';
 import { resetCurrentProduct } from '../../redux';
@@ -18,6 +19,11 @@ const NavBar: React.FC<Props> = ({ showDrawer }) => {
 			className="site-page-header"
 			title={<NavBarTitle title="Redux Cart" />}
 			extra={[
+
+				<Button onClick={showDrawer} type="link" className="wishlist-button" key="1">
+					<BsFillHeartFill />
+				</Button>,
+
 				<Button onClick={showDrawer} type="link" style={{ fontSize: "30px" }} key="1">
 					<RiShoppingCartFill />
 				</Button>,

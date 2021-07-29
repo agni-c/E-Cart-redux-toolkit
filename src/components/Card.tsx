@@ -14,7 +14,7 @@ interface Props {
 const CardComponent: React.FC<MockItems> = ({ price, description, id, image, title }) => {
 	return (
 		<Link to={`/${id}`}>
-
+			<span className="heart-pop" />
 			<Card
 				hoverable
 				style={{ width: 340, height: 360, padding: 10 }}

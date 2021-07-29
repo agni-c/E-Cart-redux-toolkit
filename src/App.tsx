@@ -6,12 +6,14 @@ import CardComponent from './components/Card';
 import NavBar from './components/layout/NavBar';
 import { getItems, MockItems } from './services/mock';
 import DrawerComponent from './components/layout/Drawer';
+//screens
 import ProductListing from './screens/ProductListing';
+import ProductDetails from './screens/ProductDetails';
+import WishList from './screens/WishList';
 
 
 import { Switch, BrowserRouter as Router, Route } from "react-router-dom"
 import { getProductDetails, toggleCart } from './redux';
-import ProductDetails from './screens/ProductDetails';
 import { useAppSelector } from './redux/hooks';
 import { useDispatch } from 'react-redux';
 
@@ -37,6 +39,7 @@ const App: React.FC = () => {
 
         <Route exact path="/" component={ProductListing} />
         <Route exact path="/:id" component={ProductDetails} />
+        <Route exact path="/wishlist" component={WishList} />
 
       </Router>
     </div>

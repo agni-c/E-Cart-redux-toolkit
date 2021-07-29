@@ -113,3 +113,38 @@
     }
   }
 }
+
+// wishlist
+.wishlist-button {
+  font-size: 25px;
+  color: red;
+  &:hover {
+    transform: scale(1.2);
+    color: red;
+  }
+}
+.heart-pop {
+  position: absolute;
+  background: url(https://cssanimation.rocks/images/posts/steps/heart.png)
+    no-repeat;
+  background-position: 0 0;
+  cursor: pointer;
+  width: 100px;
+  height: 100px;
+  animation: heartPop 1s steps(28);
+  z-index: 1;
+
+  &:hover {
+    background-position: -2800px 0;
+    transition: background 1s steps(28);
+  }
+}
+
+@keyframes heartPop {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: -2800px 0;
+  }
+}
