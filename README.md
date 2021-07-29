@@ -5,8 +5,8 @@
 - [x] ant ui :) and fake store to build the front end
 - [x] create a better redux model for add to cart
 - [x] Product page added
-- [ ] create ui for cart
-- [ ] Integrate cart with redux toolkit
+- [x] create ui for cart
+- [x] Integrate cart with redux toolkit
 
 
 #### Bonus
