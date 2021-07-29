@@ -71,7 +71,6 @@
 
   .card-cart-info {
     width: 100%;
-
     .cart-title {
       text-overflow: ellipsis;
     }
@@ -97,5 +96,20 @@
     font-size: 15px;
     /* padding: 0; */
     height: 100%;
+  }
+}
+.cart-actions {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 1.5rem;
+  .delete-item {
+    font-size: 25px;
+    color: red;
+    transition: 0.6s;
+    &:hover {
+      transform: scale(1.2);
+    }
   }
 }

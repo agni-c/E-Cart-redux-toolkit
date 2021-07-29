@@ -29,7 +29,7 @@ const DrawerComponent: React.FC<Props> = ({ onClose, visible }) => {
 			>
 				{cartItems.length > 0 ?
 					cartItems.map(({ id, image, description, price, title, qty }) =>
-						<CartItemCard key={id} image={image} description={description} price={price} qty={qty} title={title} />)
+						<CartItemCard key={id} image={image} id={id} description={description} price={price} qty={qty} title={title} />)
 					: <p>Your Cart Is Empty</p>}
 
 			</Drawer>
