@@ -4,8 +4,6 @@ import CartSlice from './slices/CartSlice';
 import productSlice from './slices/ProductSlice';
 import WishlistSlice from './slices/WishlistSlice';
 
-productSlice;
-
 const store = configureStore({
   reducer: {
     product: productSlice,

@@ -20,8 +20,10 @@ const NavBar: React.FC<Props> = ({ showDrawer }) => {
 			title={<NavBarTitle title="Redux Cart" />}
 			extra={[
 
-				<Button onClick={showDrawer} type="link" className="wishlist-button" key="1">
-					<BsFillHeartFill />
+				<Button type="link" className="wishlist-button" key="1">
+					<Link to={"/wishlist"}>
+						<BsFillHeartFill />
+					</Link>
 				</Button>,
 
 				<Button onClick={showDrawer} type="link" style={{ fontSize: "30px" }} key="1">

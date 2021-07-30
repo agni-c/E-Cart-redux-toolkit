@@ -4,14 +4,14 @@ import CardComponent from '../components/Card';
 
 import useProducts from '../hooks/useProducts';
 
+import { Spin, Space } from "antd"
 
-
-const ProductListing: React.FC = () => {
+const ProductListing = () => {
 
   let products = useProducts();
 
 
-  console.log({ products });
+  console.log(products);
   return (
     <div className="item-container">
       {products && products.length > 0 ? products.map((items: any) => (
@@ -22,8 +22,11 @@ const ProductListing: React.FC = () => {
           image={items.image}
           price={items.price}
           title={items.title}
+          inWishlist={items.inWishlist}
         />
-      )) : null}
+      )) : <Space style={{ display: "grid", color: "red", placeItems: "center", width: "100vw", height: "80vh" }} size="large">
+        <Spin size="large" />
+      </Space>}
     </div>
   );
 };

@@ -10,6 +10,7 @@ interface Item {
   category?: string;
   image: string;
   qty: number;
+  inWishlist: boolean;
 }
 interface stateProps {
   products: Item[];
@@ -23,7 +24,13 @@ const initialState: stateProps = {
 export const loadProducts = createAsyncThunk(
   'products/loadProducts',
   async () => {
-    const data = await getItems();
+    const cachedProducts = localStorage.getItem('listing');
+    let data: [Item] = cachedProducts
+      ? JSON.parse(cachedProducts)
+      : await getItems();
+    data.forEach((item) => {
+      if (item.inWishlist === undefined || null) item.inWishlist = false;
+    });
     console.log(data, 'loadProducts');
     return data;
   }
@@ -45,6 +52,14 @@ const productSlice = createSlice({
     resetCurrentProduct: (state) => {
       state.currentProduct = null;
     },
+    tagOnWishlist: (state, action) => {
+      state.products = state.products.map((product) =>
+        product.id === action.payload.id
+          ? { ...product, inWishlist: !product.inWishlist }
+          : product
+      );
+      localStorage.setItem('listing', JSON.stringify(state.products));
+    },
   },
   extraReducers: (cases) => {
     cases
@@ -63,5 +78,5 @@ const productSlice = createSlice({
   },
 });
 
-export const { resetCurrentProduct } = productSlice.actions;
+export const { resetCurrentProduct, tagOnWishlist } = productSlice.actions;
 export default productSlice.reducer;

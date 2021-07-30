@@ -7,10 +7,7 @@ interface stateProps {
     id: number;
     title: string;
     price: number;
-    description: string;
-    category?: string;
     image: string;
-    qty: number;
   }[];
 }
 const initialState: stateProps = {
@@ -32,27 +29,15 @@ const wishlistSlice = createSlice({
       );
 
       state.wishlist = isItemExists
-        ? state.wishlist.map((item) =>
-            item.id === action.payload.id
-              ? { ...item, qty: item.qty + action.payload.qty }
-              : item
-          )
+        ? state.wishlist.filter((item) => item.id !== action.payload.id)
         : [...state.wishlist, action.payload];
+
       localStorage.setItem('wishlist', JSON.stringify(state.wishlist));
     },
 
     removeFromWishlist: (state, action) => {
       state.wishlist = state.wishlist.filter(
         (item) => item.id !== action.payload.id
-      );
-      localStorage.setItem('wishlist', JSON.stringify(state.wishlist));
-    },
-
-    adjustQty: (state, action) => {
-      state.wishlist = state.wishlist.map((item) =>
-        item.id === action.payload.id
-          ? { ...item, qty: item.qty + action.payload.qty }
-          : item
       );
       localStorage.setItem('wishlist', JSON.stringify(state.wishlist));
     },

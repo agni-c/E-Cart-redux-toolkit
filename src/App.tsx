@@ -36,11 +36,11 @@ const App: React.FC = () => {
       <Router>
         <NavBar showDrawer={showDrawer} />
         <DrawerComponent onClose={onClose} visible={visible} />
-
-        <Route exact path="/" component={ProductListing} />
-        <Route exact path="/:id" component={ProductDetails} />
-        <Route exact path="/wishlist" component={WishList} />
-
+        <Switch>
+          <Route exact path="/" component={ProductListing} />
+          <Route path="/wishlist" component={WishList} />
+          <Route exact path="/:id" component={ProductDetails} />
+        </Switch>
       </Router>
     </div>
   )
