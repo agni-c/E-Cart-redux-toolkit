@@ -10,4 +10,4 @@
 
 
 #### Bonus
-- [ ]  add an wishlist feature
+- [x]  add an wishlist feature
